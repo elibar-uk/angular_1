@@ -2,23 +2,26 @@
 <html lang="en" ng-app="toDoApp">
   <head>
     <meta charset="utf-8">
-   <title>To Do List</title>
-   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-   <script type="text/javascript" src="app.js"></script>
-   <script type="text/javascript" src="controllers.js"></script>
-   <script  type="text/javascript"  src="ToDoFactory.js"></script>
-   <script  type="text/javascript"  src="ToDoService.js"></script>
+    <title>To do list!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script  type="text/javascript"  src="./js/app.js"></script>
+    <script  type="text/javascript"  src="./js/controllers.js"></script>
+    <script  type="text/javascript"  src="./js/ToDoFactory.js"></script>
+    <script  type="text/javascript"  src="./js/ToDoService.js"></script>
+
   </head>
   <body>
     <h1>To Do List</h1>
     <div ng-controller="ToDoController as ctrl">
-      <p ng-repeat="todo in controller.todos">
-        {{ todo.task }}: {{ todo.completed ? "completed" : "not completed" }}
-        <span ng-click="todo.complete();">Complete</span>
+      <p ng-repeat="list in ctrl.todos">
+        {{ list.text }}:
+        {{ list.completed ? "completed" : "to be done" }}
+        <button ng-click="list.complete();">Complete</button>
       </p>
-      <input ng-model="todoText" type="text">
-      <button ng-click="controller.addToDo(todoText);" type="button" name="button">Add a ToDo</button>
-      <button ng-click="controller.removeToDo();" type="button" name="button">Remove last ToDo</button>
-   </div>
+
+      <input ng-model="newItem" type="text">
+      <button ng-click="ctrl.addToDo(newItem);" name="button">Add</button>
+      <button ng-click="ctrl.removeToDo();" name="button">Remove</button>
+    </div>
   </body>
 </html>
